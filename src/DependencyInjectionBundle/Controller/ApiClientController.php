@@ -13,8 +13,8 @@ class ApiClienController extends Controller
     {
         $dispatcher = new ApiClienEvent('https://www.google.lt/');
         $listener = new ApiListener();
-        $dispatcher->addListener('api.client.success', array($listener, 'onSuccess'));
-        $dispatcher->addListener('api.client.failure', array($listener, 'onFailure'));
-        $dispatcher->addListener('api.client.previous', array($listener, 'onPrevious'));
+        $dispatcher->dispatch('api.client.success', array($listener, 'onSuccess'));
+        $dispatcher->dispatch('api.client.failure', array($listener, 'onFailure'));
+        $dispatcher->dispatch('api.client.previous', array($listener, 'onPrevious'));
     }
 }
