@@ -1,0 +1,22 @@
+services:
+  api_client:
+    class:  DependencyInjectionBundle\ApiClient
+
+  api_client_event:
+      class:  DependencyInjectionBundle\ApiClientEvent
+
+
+  api.listener.success:
+    class: DependencyInjectionBundle\EventListener\ApiListener
+    tags:
+      - { name: kernel.event_listener, event: api.client.success, method: onSuccess }
+
+  api.listener.failure:
+    class:  DependencyInjectionBundle\EventListener\ApiListener
+    tags:
+      - { name: kernel.event_listener, event: api.client.failure, method: onFailure }
+
+  api.listener.previous:
+    class:  DependencyInjectionBundle\EventListener\ApiListener
+    tags:
+      - { name: kernel.event_listener, event: api.client.previous, method: onPrevious }

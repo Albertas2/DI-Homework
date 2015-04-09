@@ -1,0 +1,11 @@
+arameters:
+    multiplier.variable: 5
+
+services:
+    mailer:
+        class:     Multiplier
+        arguments: ["%multiplier.variable%"]
+    newsletter_manager:
+        class:     Adder
+        calls:
+            - [setVariable, ["@multiplier"]]
